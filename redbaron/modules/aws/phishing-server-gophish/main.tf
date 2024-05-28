@@ -33,7 +33,7 @@ resource "aws_instance" "gophish-server" {
   associate_public_ip_address = true
 
   provisioner "local-exec" {
-    command = "echo \"${tls_private_key.ssh[count.index].private_key_pem}\" > ssh_keys/${self.public_ip} && echo \"${tls_private_key.ssh[count.index].public_key_openssh}\" > ssh_keys/${self.public_ip}.pub && chmod 600 ssh_keys/*"
+    command = "echo \"${tls_private_key.ssh[count.index].private_key_pem}\" > ssh_keys/${self.public_ip} && echo \"${tls_private_key.ssh[count.index].public_key_openssh}\" > ssh_keys/${self.public_ip}.pub && chmod 400 ssh_keys/*"
   }
 
   provisioner "local-exec" {
@@ -44,13 +44,12 @@ resource "aws_instance" "gophish-server" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
-      "sudo apt-get install -y tmux",
     ]
 
     connection {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
-      user        = "admin"
+      user        = "ubuntu"
       private_key = tls_private_key.ssh[count.index].private_key_pem
     }
   }
@@ -61,42 +60,7 @@ resource "aws_instance" "gophish-server" {
     connection {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
-      user        = "admin"
-      private_key = tls_private_key.ssh[count.index].private_key_pem
-    }
-  }
-
-  provisioner "file" {
-    source      = "../../redbaron/data/scripts/gophish/gophish.service"
-    destination = "/tmp/gophish.service"
-    connection {
-      host        = coalesce(self.public_ip, self.private_ip)
-      type        = "ssh"
-      user        = "admin"
-      private_key = tls_private_key.ssh[count.index].private_key_pem
-    }
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo mv /tmp/gophish.service /lib/systemd/system/gophish.service",
-    ]
-
-    connection {
-      host        = coalesce(self.public_ip, self.private_ip)
-      type        = "ssh"
-      user        = "admin"
-      private_key = tls_private_key.ssh[count.index].private_key_pem
-    }
-  }
-
-  provisioner "file" {
-    source      = "../../redbaron/data/scripts/gophish/gophish_service.sh"
-    destination = "/tmp/gophish.sh"
-    connection {
-      host        = coalesce(self.public_ip, self.private_ip)
-      type        = "ssh"
-      user        = "admin"
+      user        = "ubuntu"
       private_key = tls_private_key.ssh[count.index].private_key_pem
     }
   }
@@ -107,7 +71,7 @@ resource "aws_instance" "gophish-server" {
     connection {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
-      user        = "admin"
+      user        = "ubuntu"
       private_key = tls_private_key.ssh[count.index].private_key_pem
     }
   }
@@ -121,7 +85,7 @@ resource "aws_instance" "gophish-server" {
     connection {
       host        = coalesce(self.public_ip, self.private_ip)
       type        = "ssh"
-      user        = "admin"
+      user        = "ubuntu"
       private_key = tls_private_key.ssh[count.index].private_key_pem
     }
   }
@@ -137,7 +101,7 @@ data "template_file" "ssh_config" {
   vars = {
     name         = "gophish_${aws_instance.gophish-server[count.index].public_ip}"
     hostname     = aws_instance.gophish-server[count.index].public_ip
-    user         = "admin"
+    user         = "ubuntu"
     identityfile = "${abspath(path.root)}/ssh_keys/${aws_instance.gophish-server[count.index].public_ip}"
   }
 }

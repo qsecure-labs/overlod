@@ -2,7 +2,7 @@
     "mod_redirector": {
         "module": "redirector",
         "type": "http",
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "redirector_id": "",
         "provider": "aws",
         "size": "t2.micro",
@@ -13,7 +13,7 @@
         "type": "http",
         "redirectors": 1,
         "tools": [],
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "provider": "aws",
         "size": "t2.micro",
         "id": "",
@@ -33,7 +33,7 @@
     "mod_gophish": {
         "module": "gophish",
         "redirectors": 0,
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "provider": "aws",
         "size": "t2.micro",
         "id": ""
@@ -43,14 +43,14 @@
         "id": "",
         "domain_name": "",
         "mod_id": "",
-        "email": "kokosexample.com",
+        "email": "gtt.gg",
         "zone": "new"
     },
     "mod_mail": {
         "module": "mail",
         "domain_name": "",
         "subdomain": "mail",
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "provider": "aws",
         "size": "t2.micro",
         "id": "",
@@ -59,7 +59,7 @@
     "mod_webserver": {
         "module": "webserver",
         "redirectors": 1,
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "provider": "aws",
         "size": "t2.micro",
         "id": ""
@@ -86,7 +86,7 @@
         "mod_id": ""
     },
     "aws": {
-        "regions": ["us-east-2", "us-east-1", "us-west-1", "us-west-2", "ap-east-1", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "me-south-1", "sa-east-1"],
+        "regions": ["us-east-2", "us-east-1", "us-west-1", "us-west-2", "ap-east-1", "ap-south-1", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-northeast-1", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-1", "me-south-1", "sa-east-1"],
         "size": ["t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "a1.medium", "a1.large", "a1.xlarge", "a1.2xlarge", "a1.4xlarge", "t3.nano", "t3.micro", "t3.small", "t3.medium", "t3.large", "t3.xlarge", "t3.2xlarge", "t3a.nano", "t3a.micro", "t3a.small", "t3a.medium", "t3a.large", "t3a.xlarge", "t3a.2xlarge"],
         "default_region": "eu-west-1",
         "default_size": "t2.micro",
@@ -114,11 +114,8 @@
             "eu-central-1-kali": "ami-0b61a044e0ae0d17d",
             "eu-central-1-ubuntu": "ami-07d14b5d47292e022",
             "eu-west-1-debian": "ami-ce76a7b7",
-            "eu-west-2-debian": "ami-a6f9ebc2",
-            "eu-west-1-kali": "ami-085caaed54aee448f",
-            "eu-west-2-kali": "ami-085caaed54aee448f",
-            "eu-west-1-ubuntu": "ami-014aff0119d738e34",
-            "eu-west-2-ubuntu": "ami-0339455b66e82a8ca",
+            "eu-west-1-kali": "ami-0e51f99217a7163b9",
+            "eu-west-1-ubuntu": "ami-0f56955469757e5aa",
             "sa-east-1-debian": "ami-f5c7b899",
             "sa-east-1-kali": "ami-00c9b2d0ec9e3835c",
             "sa-east-1-ubuntu": "ami-0a32099c90454cc7a",
@@ -136,9 +133,9 @@
             "us-west-2-ubuntu": "ami-0652b0a864db01553"}
         },    
         "digitalocean": {
-            "regions": ["NYC1", "NYC2", "NYC2", "SFO1", "SFO2", "AMS2", "AMS1", "eu-west-2", "FRA1", "TOR1", "BLR1"],
+            "regions": ["NYC1", "NYC2", "NYC2", "SFO1", "SFO2", "AMS2", "AMS1", "eu-west-1", "FRA1", "TOR1", "BLR1"],
             "size": ["t2.micro"],
-            "default_region": "eu-west-2",
+            "default_region": "eu-west-1",
             "default_size": "t2.micro",
             "supported_distros":  ["debian","ubuntu"]
         },

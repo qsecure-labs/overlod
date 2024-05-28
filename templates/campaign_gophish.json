@@ -2,7 +2,7 @@
     {
         "module": "gophish",
         "redirectors": 0,
-        "region": "eu-west-2",
+        "region": "eu-west-1",
         "provider": "aws",
         "size": "t2.small",
         "id": "gophish"

@@ -39,6 +39,6 @@ variable "amis" {
 }
 
 variable "user" {
-  default = "admin"
+  default = "kali"
 }
 

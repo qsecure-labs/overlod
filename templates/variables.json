@@ -1,8 +1,5 @@
 {
-    "dotoken": "",
     "domains": [],
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "godaddy_access_key": "",
-    "godaddy_secret_key": ""
+    "aws_access_key": "AKIAUC4ZHUPA5QXKM3PW",
+    "aws_secret_key": "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"
 }

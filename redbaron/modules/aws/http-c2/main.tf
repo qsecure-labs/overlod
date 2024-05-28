@@ -43,18 +43,6 @@ resource "aws_instance" "http-c2" {
     command = "echo \"${tls_private_key.ssh[count.index].private_key_pem}\" > ssh_keys/${self.public_ip} && echo \"${tls_private_key.ssh[count.index].public_key_openssh}\" > ssh_keys/${self.public_ip}.pub && chmod 600 ssh_keys/*"
   }
 
-  provisioner "remote-exec" {
-    scripts = concat(["../../redbaron/data/scripts/core_deps.sh"], var.install)
-
-    connection {
-      host        = coalesce(self.public_ip, self.private_ip)
-      type        = "ssh"
-      user        = var.user
-      private_key = tls_private_key.ssh[count.index].private_key_pem
-    }
-  }
-
-
   provisioner "local-exec" {
     when    = destroy
     command = "rm ssh_keys/${self.public_ip}*"
